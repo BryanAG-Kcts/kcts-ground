@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    height: 100vh;
+    height: 100dvh;
+}
+
+.sectionSplit {
+    flex: 1 1 0;
+    height: 100%;
+}
