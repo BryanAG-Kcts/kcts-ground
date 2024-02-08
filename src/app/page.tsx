@@ -1,11 +1,16 @@
+
 import { Playground } from '@/components/playground/playground'
 import { SourceCode } from '@/components/sourceCode/sourceCode'
-
-export default function Home (): JSX.Element {
+interface Props {
+  searchParams: {
+    code?: string
+  }
+}
+export default function Home ({ searchParams }: Props): JSX.Element {
   return (
-    <main className='flex flex-wrap h-screen'>
+    <main className='grid grid-rows-2 sm:grid-cols-2 sm:grid-rows-1 h-screen'>
       <SourceCode />
-      <Playground />
+      <Playground code={searchParams?.code} />
     </main>
   )
 }

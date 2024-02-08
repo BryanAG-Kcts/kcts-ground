@@ -1,18 +1,18 @@
 export const defaultCode = /* html */`
-    <style>
-        body {
+<main kcts>
+    
+</main>
+
+<style>
+    body {
             background: #FFF;
+            color: red
         }
-    </style>
+</style>
 
-    <body>
-        <div class="root"></div>
-    </body>
-
-    <script>
-        const kcts = "Tu código HTML, CSS y JS aquí"
-        const root = document.querySelector(".root")
+<script>
+    const kcts = "Tu código HTML, CSS y JS aquí"
+        const root = document.querySelector("main[kcts]")
         root.innerHTML = kcts
-    </script>
-
+</script>
 `

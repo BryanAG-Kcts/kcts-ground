@@ -1,9 +1,9 @@
-'use client'
-import { usePlayGroundState } from '@/hooks/usePlayGround'
+interface Props {
+  code?: string
+}
 
-export const Playground = (): JSX.Element => {
-  const { sourceCode } = usePlayGroundState()
+export const Playground = ({ code = '' }: Props): JSX.Element => {
   return (
-    <iframe className='sectionSplit' srcDoc={sourceCode} />
+    <iframe className='sectionSplit' id='wa' srcDoc={code} />
   )
 }
