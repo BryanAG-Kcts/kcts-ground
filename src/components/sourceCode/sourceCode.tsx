@@ -1,62 +1,50 @@
 'use client'
-import { defaultCode } from '@/constants/config'
-import { useConfig } from '@/hooks/configState'
-import { Editor } from '@monaco-editor/react'
+// import { useConfig } from '@/hooks/configState'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
-import { useRef } from 'react'
+import { HtmlCode } from './htmlCode'
+import { CssCode } from './cssCode'
+import { JsCode } from './jsCode'
+import { EditorMount, HandleQueryParams, ResetEditor } from './types'
 
 export const SourceCode = (): JSX.Element => {
-  const { colorMode } = useConfig()
+  // const { colorMode } = useConfig()
   const searchParams = useSearchParams()
   const pathName = usePathname()
   const { replace } = useRouter()
-  const editorRef = useRef<any>(null)
+  const params = new URLSearchParams(searchParams)
 
-  const handleQueryParams = (query: string): void => {
-    const params = new URLSearchParams(searchParams)
+  const handleQueryParams: HandleQueryParams = (query, value = '') => {
+    const decode = btoa(value)
 
-    const query64 = btoa(query)
-
-    if (query.trim().length > 0) {
-      params.set('code', query64)
+    if (value.trim().length > 0) {
+      params.set(query, decode)
     } else {
-      params.delete('code')
+      params.delete(query)
     }
 
     replace(`${pathName}?${params.toString()}`)
   }
 
-  const reset = (code: string): void => {
-    handleQueryParams(defaultCode)
+  const resetEditor: ResetEditor = (query, code, editorRef) => {
+    handleQueryParams(query, code)
     const editor = editorRef.current
     if (editor != null) {
       editor.setValue(code)
     }
   }
 
-  const editorMount = (editor: any): void => {
+  const editorMount: EditorMount = (editor, query, defaultCode) => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    const code = atob(searchParams.get('code') ?? '') || defaultCode
-    editorRef.current = editor
+    const code = atob(searchParams.get(query) ?? '') || defaultCode
     editor.setValue(code)
-    handleQueryParams(code)
+    handleQueryParams(query, code)
   }
 
   return (
-    <div className='sectionSplit relative bg-red-400 overflow-hidden'>
-      <Editor
-        height='100%'
-        width='100%'
-        defaultLanguage='html'
-        defaultValue={searchParams.get('code') ?? ''}
-        onChange={value => handleQueryParams(value ?? '')}
-        theme={colorMode.value}
-        onMount={editorMount}
-        options={
-         { minimap: { enabled: false } }
-        }
-      />
-      <button onClick={() => reset(defaultCode)} className={`absolute top-0 right-0 z-20 mx-6 my-2 ${colorMode.value}`}>Resetear</button>
-    </div>
+    <>
+      <HtmlCode handleQueryParams={handleQueryParams} editorMount={editorMount} resetEditor={resetEditor} />
+      <CssCode handleQueryParams={handleQueryParams} editorMount={editorMount} resetEditor={resetEditor} />
+      <JsCode handleQueryParams={handleQueryParams} editorMount={editorMount} resetEditor={resetEditor} />
+    </>
   )
 }
