@@ -19,7 +19,7 @@ export async function GET (_: NextRequest, { params }: Props): Promise<NextRespo
   await Promise.all([pr1, pr2])
 
   const pdf = await page.pdf({
-    path: 'result.pdf',
+    // path: 'result.pdf',
     margin: { top: '0', right: '0', bottom: '0', left: '0' },
     printBackground: true,
     format: 'A4'
