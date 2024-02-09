@@ -1,9 +1,10 @@
 interface Props {
-  code?: string
+  code64?: string
 }
 
-export const Playground = ({ code = '' }: Props): JSX.Element => {
+export const Playground = ({ code64 = '' }: Props): JSX.Element => {
+  const code = atob(code64)
   return (
-    <iframe className='sectionSplit' id='wa' srcDoc={code} />
+    <iframe className='sectionSplit' srcDoc={code} />
   )
 }

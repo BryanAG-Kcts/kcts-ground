@@ -1,5 +1,4 @@
-export const defaultCode = /* html */`
-<main kcts>
+export const defaultCode = /* html */`<main kcts>
     
 </main>
 
@@ -12,7 +11,7 @@ export const defaultCode = /* html */`
 
 <script>
     const kcts = "Tu código HTML, CSS y JS aquí"
-        const root = document.querySelector("main[kcts]")
-        root.innerHTML = kcts
+    const root = document.querySelector("main[kcts]")
+    root.innerHTML = kcts
 </script>
 `
