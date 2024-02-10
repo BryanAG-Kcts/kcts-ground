@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer'
 import { NextRequest, NextResponse } from 'next/server'
+import chromium from '@sparticuz/chromium-min'
 
 interface Props {
   params: {
@@ -11,9 +12,9 @@ export async function GET (_: NextRequest, { params }: Props): Promise<NextRespo
   try {
     const code = atob(params.base)
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      headless: true,
-      ignoreHTTPSErrors: true
+      args: chromium.args,
+      executablePath: await chromium.executablePath('https://github.com/Sparticuz/chromium/releases/download/v121.0.0/chromium-v121.0.0-pack.tar'),
+      headless: true
     })
     const page = await browser.newPage()
 
