@@ -10,11 +10,7 @@ interface Props {
 export async function GET (_: NextRequest, { params }: Props): Promise<NextResponse> {
   try {
     const code = atob(params.base)
-    const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      headless: true,
-      ignoreHTTPSErrors: true
-    })
+    const browser = await puppeteer.launch()
     const page = await browser.newPage()
 
     await page.setContent(code, { waitUntil: 'domcontentloaded' })
