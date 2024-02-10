@@ -1,4 +1,5 @@
-import puppeteer from 'puppeteer'
+import chromium from '@sparticuz/chromium-min'
+import puppeteer from 'puppeteer-core'
 import { NextRequest, NextResponse } from 'next/server'
 
 interface Props {
@@ -10,7 +11,14 @@ interface Props {
 export async function GET (_: NextRequest, { params }: Props): Promise<NextResponse> {
   try {
     const code = atob(params.base)
-    const browser = await puppeteer.launch()
+
+    const browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath('https://github.com/Sparticuz/chromium/releases/download/v121.0.0/chromium-v121.0.0-pack.tar'),
+      headless: true,
+      ignoreHTTPSErrors: true
+    })
     const page = await browser.newPage()
 
     await page.setContent(code, { waitUntil: 'domcontentloaded' })
