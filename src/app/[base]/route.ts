@@ -11,8 +11,7 @@ export async function GET (_: NextRequest, { params }: Props): Promise<NextRespo
   try {
     const code = atob(params.base)
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      headless: true
+      executablePath: '/usr/bin/chromium'
     })
     const page = await browser.newPage()
 
