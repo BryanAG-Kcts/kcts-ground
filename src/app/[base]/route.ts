@@ -35,6 +35,6 @@ export async function GET (_: NextRequest, { params }: Props): Promise<NextRespo
     headers.set('Access-Control-Allow-Credentials', 'true')
     return new NextResponse(pdf, { headers })
   } catch (error: any) {
-    return NextResponse.json({ error: error.message })
+    return NextResponse.json({ error: error.message, code: params.base })
   }
 }
