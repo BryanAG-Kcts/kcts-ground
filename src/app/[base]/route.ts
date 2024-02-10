@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer'
 import { NextRequest, NextResponse } from 'next/server'
-import chromium from '@sparticuz/chromium-min'
 
 interface Props {
   params: {
@@ -12,16 +11,14 @@ export async function GET (_: NextRequest, { params }: Props): Promise<NextRespo
   try {
     const code = atob(params.base)
     const browser = await puppeteer.launch({
-      args: chromium.args,
-      executablePath: await chromium.executablePath('https://github.com/Sparticuz/chromium/releases/download/v121.0.0/chromium-v121.0.0-pack.tar'),
-      headless: true
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      headless: true,
+      ignoreHTTPSErrors: true
     })
     const page = await browser.newPage()
 
-    const pr1 = page.setContent(code, { waitUntil: 'domcontentloaded' })
-    const pr2 = page.emulateMediaType('screen')
-
-    await Promise.all([pr1, pr2])
+    await page.setContent(code, { waitUntil: 'domcontentloaded' })
+    await page.emulateMediaType('screen')
 
     const pdf = await page.pdf({
       margin: { top: '0', right: '0', bottom: '0', left: '0' },
@@ -34,6 +31,8 @@ export async function GET (_: NextRequest, { params }: Props): Promise<NextRespo
     const headers = new Headers()
     headers.set('Content-Type', 'application/pdf')
     headers.set('Content-Disposition', 'attachment; filename=code.pdf')
+    headers.set('Access-Control-Allow-Origin', '*')
+    headers.set('Access-Control-Allow-Credentials', 'true')
     return new NextResponse(pdf, { headers })
   } catch (error: any) {
     return NextResponse.json({ error: error.message })
