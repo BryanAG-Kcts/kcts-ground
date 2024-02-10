@@ -9,7 +9,6 @@ interface Props {
 
 export async function GET (_: NextRequest, { params }: Props): Promise<NextResponse> {
   const code = atob(params.base)
-
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
 

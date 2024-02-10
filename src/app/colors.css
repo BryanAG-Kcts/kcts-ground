@@ -1,0 +1,9 @@
+:root {
+    --bg-primary: #292929;
+    --color-primary: #fff;
+}
+
+.vs-light {
+    --bg-primary: #fff;
+    --color-primary: #292929;
+}

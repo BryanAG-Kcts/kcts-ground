@@ -1,5 +1,4 @@
 'use client'
-// import { useConfig } from '@/hooks/configState'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import { HtmlCode } from './htmlCode'
 import { CssCode } from './cssCode'
@@ -7,7 +6,6 @@ import { JsCode } from './jsCode'
 import { EditorMount, HandleQueryParams, ResetEditor } from './types'
 
 export const SourceCode = (): JSX.Element => {
-  // const { colorMode } = useConfig()
   const searchParams = useSearchParams()
   const pathName = usePathname()
   const { replace } = useRouter()

@@ -4,9 +4,11 @@ import { FloatLang } from './floatLang'
 import { EditorLangProps } from './types'
 import { defaultHtml, htmlQuery } from './const'
 import { useRef } from 'react'
+import { useConfig } from '@/hooks/configState'
 
 export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLangProps): JSX.Element => {
   const editorRef = useRef<any>(null)
+  const { colorMode } = useConfig()
 
   function mount (editor: any): void {
     editorRef.current = editor
@@ -21,7 +23,7 @@ export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: Editor
         language='html'
         defaultLanguage='html'
         //
-        theme='vs-dark'
+        theme={colorMode.value}
         onChange={value => handleQueryParams(htmlQuery, value)}
         onMount={editor => mount(editor)}
         options={{

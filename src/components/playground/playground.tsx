@@ -1,3 +1,5 @@
+import { generateIframeHTML } from './const'
+
 interface Props {
   html64?: string
   css64?: string
@@ -9,26 +11,7 @@ export const Playground = ({ html64 = '', css64 = '', js64 = '' }: Props): JSX.E
   const css = atob(css64)
   const js = atob(js64)
 
-  const iframe = /* html */`
-    <html>
-    
-      <head>
-        <style>
-          ${css}
-        </style>
-      </head>
-
-      <body>
-
-        ${html}
-
-        <script>
-          ${js}
-        </script>
-      </body>
-
-    </html>
-  `
+  const iframe = generateIframeHTML(html, css, js)
 
   return (
     <div className='sectionSplit'>
