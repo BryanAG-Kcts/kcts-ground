@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer'
 import { NextRequest, NextResponse } from 'next/server'
-import Chromium from 'chrome-aws-lambda'
 
 interface Props {
   params: {
@@ -12,7 +11,9 @@ export async function GET (_: NextRequest, { params }: Props): Promise<NextRespo
   try {
     const code = atob(params.base)
     const browser = await puppeteer.launch({
-      executablePath: await Chromium.executablePath
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      headless: true,
+      ignoreHTTPSErrors: true
     })
     const page = await browser.newPage()
 
