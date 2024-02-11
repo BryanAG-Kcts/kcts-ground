@@ -9,16 +9,19 @@ export const layoutGridEditor = {
 export const layoutGridEditorArray = Object.values(layoutGridEditor)
 export type LayoutGridEditor = keyof typeof layoutGridEditor
 
-export const backgrounds = {
-  light: {
-    value: 'vs-light',
-    follow: 'dark'
-  },
-  dark: {
-    value: 'vs-dark',
-    follow: 'light'
-  }
+export const editorThemes = {
+  light: 'vs-light',
+  dark: 'vs-dark'
 } as const
 
-export type Background = keyof typeof backgrounds
-export type Backgrounds = typeof backgrounds.dark | typeof backgrounds.light
+export type EditorThemes = typeof editorThemes.dark | typeof editorThemes.light
+
+export const editorLineNumbers = {
+  on: 'on',
+  off: 'off',
+  interval: 'interval',
+  relative: 'relative'
+} as const
+
+export type EditorLineNumbers = typeof editorLineNumbers[keyof typeof editorLineNumbers]
+export const editorLineNumbersArray = Object.values(editorLineNumbers)

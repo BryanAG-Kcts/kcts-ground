@@ -1,0 +1,12 @@
+.options {
+    @apply flex flex-col gap-4;
+}
+.options h4 {
+    font-weight: bold;
+}
+
+.selectOptions {
+    background: var(--bg-primary);
+    color: var(--color-primary);
+    padding: 10px 5px;
+}

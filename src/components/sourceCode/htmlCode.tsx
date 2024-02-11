@@ -8,7 +8,7 @@ import { useConfig } from '@/hooks/configState'
 
 export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLangProps): JSX.Element => {
   const editorRef = useRef<any>(null)
-  const { colorMode } = useConfig()
+  const { editorTheme, editorLineNumbers } = useConfig()
 
   function mount (editor: any): void {
     editorRef.current = editor
@@ -23,12 +23,13 @@ export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: Editor
         language='html'
         defaultLanguage='html'
         //
-        theme={colorMode.value}
+        theme={editorTheme}
         onChange={value => handleQueryParams(htmlQuery, value)}
         onMount={editor => mount(editor)}
         options={{
           wordWrap: 'on',
-          minimap: { enabled: false }
+          minimap: { enabled: false },
+          lineNumbers: editorLineNumbers
         }}
 
       />

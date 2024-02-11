@@ -4,9 +4,11 @@ import { FloatLang } from './floatLang'
 import { EditorLangProps } from './types'
 import { cssQuery, defaultCss } from './const'
 import { useRef } from 'react'
+import { useConfig } from '@/hooks/configState'
 
 export const CssCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLangProps): JSX.Element => {
   const editorRef = useRef<any>(null)
+  const { editorTheme, editorLineNumbers } = useConfig()
 
   function mount (editor: any): void {
     editorRef.current = editor
@@ -20,12 +22,13 @@ export const CssCode = ({ handleQueryParams, editorMount, resetEditor }: EditorL
         width='100%'
         language='css'
         defaultLanguage='css'
-        theme='vs-dark'
+        theme={editorTheme}
         onChange={value => handleQueryParams(cssQuery, value)}
         onMount={editor => mount(editor)}
         options={{
           wordWrap: 'on',
-          minimap: { enabled: false }
+          minimap: { enabled: false },
+          lineNumbers: editorLineNumbers
         }}
       />
 

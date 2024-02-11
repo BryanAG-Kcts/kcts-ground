@@ -4,6 +4,7 @@ import { HtmlCode } from './htmlCode'
 import { CssCode } from './cssCode'
 import { JsCode } from './jsCode'
 import { EditorMount, HandleQueryParams, ResetEditor } from './types'
+import { cssQuery, htmlQuery, jsQuery } from './const'
 
 export const SourceCode = (): JSX.Element => {
   const searchParams = useSearchParams()
@@ -33,9 +34,15 @@ export const SourceCode = (): JSX.Element => {
 
   const editorMount: EditorMount = (editor, query, defaultCode) => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    const code = atob(searchParams.get(query) ?? '') || defaultCode
-    editor.setValue(code)
-    handleQueryParams(query, code)
+    if (!searchParams.get(htmlQuery) && !searchParams.get(cssQuery) && !searchParams.get(jsQuery)) {
+      editor.setValue(defaultCode)
+      handleQueryParams(query, defaultCode)
+    }
+
+    const code = searchParams.get(query)
+    if (code != null) {
+      editor.setValue(atob(code))
+    }
 
     window.addEventListener('resize', () => {
       editor.layout()

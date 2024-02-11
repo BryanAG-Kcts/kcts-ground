@@ -9,7 +9,14 @@ const quickSand = Quicksand({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'KctsGround',
-  description: 'Playground de código, transforma tu html,css y js en un pdf'
+  description: 'Playground de código, transforma tu html,css y js en un pdf',
+  alternates: {
+    canonical: 'https://kcts-ground.vercel.app'
+  },
+  icons: {
+    icon: '/kactuswowIcon.png',
+    username: '/kactuswowIcon.png'
+  }
 }
 
 export default function RootLayout ({
