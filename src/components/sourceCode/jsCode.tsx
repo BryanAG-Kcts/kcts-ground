@@ -14,7 +14,7 @@ export const JsCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLa
   }
 
   return (
-    <div className='sectionSplit'>
+    <div className='sectionSplit overflow-auto'>
       <Editor
         height='100%'
         width='100%'

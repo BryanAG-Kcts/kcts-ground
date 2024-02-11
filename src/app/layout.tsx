@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Quicksand } from 'next/font/google'
 import { ReactNode } from 'react'
-import './globals.css'
-import './colors.css'
+import './styles/globals.css'
+import './styles/colors.css'
+import './styles/layoutGrid.css'
 
 const quickSand = Quicksand({ subsets: ['latin'] })
 

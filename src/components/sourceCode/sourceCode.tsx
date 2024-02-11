@@ -36,6 +36,10 @@ export const SourceCode = (): JSX.Element => {
     const code = atob(searchParams.get(query) ?? '') || defaultCode
     editor.setValue(code)
     handleQueryParams(query, code)
+
+    window.addEventListener('resize', () => {
+      editor.layout()
+    })
   }
 
   return (

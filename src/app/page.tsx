@@ -1,7 +1,10 @@
+import { AsideSlider } from '@/components/config/asideSlider/asideSlider'
 import { ChangeColorEditor } from '@/components/config/changeColorEditor'
 import { Download } from '@/components/config/download'
+import { UserOptions } from '@/components/config/options/options'
 import { Playground } from '@/components/playground/playground'
 import { SourceCode } from '@/components/sourceCode/sourceCode'
+import { EditorGrid } from './editorGrid'
 interface Props {
   searchParams: {
     html?: string
@@ -11,16 +14,19 @@ interface Props {
 }
 export default function Home ({ searchParams }: Props): JSX.Element {
   return (
-    <main className='flex flex-1'>
+    <main className='h-full flex'>
       <aside className='asideConfig'>
         <ChangeColorEditor />
         <Download html={searchParams.html} css={searchParams.css} js={searchParams.js} />
+        <AsideSlider icon='/settings.svg' title='wasa'>
+          <UserOptions />
+        </AsideSlider>
       </aside>
 
-      <section className='grid grid-rows-4 sm:grid-cols-2 sm:grid-rows-2 overflow-x-auto flex-1'>
+      <EditorGrid>
         <SourceCode />
         <Playground css64={searchParams?.css} html64={searchParams?.html} js64={searchParams?.js} />
-      </section>
+      </EditorGrid>
     </main>
   )
 }
