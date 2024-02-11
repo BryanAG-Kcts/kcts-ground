@@ -22,7 +22,6 @@ export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: Editor
         width='100%'
         language='html'
         defaultLanguage='html'
-        //
         theme={editorTheme}
         onChange={value => handleQueryParams(htmlQuery, value)}
         onMount={editor => mount(editor)}

@@ -5,6 +5,7 @@
 body {
     height: 100vh;
     height: 100dvh;
+    overflow: hidden;
 }
 
 .sectionSplit {
@@ -25,8 +26,4 @@ body {
     gap: 20px;
     position: relative;
     z-index: 100;
-}
-
-.asideConfig svg {
-    aspect-ratio: 1;
 }

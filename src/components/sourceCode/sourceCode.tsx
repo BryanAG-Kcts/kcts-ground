@@ -44,9 +44,7 @@ export const SourceCode = (): JSX.Element => {
       editor.setValue(atob(code))
     }
 
-    window.addEventListener('resize', () => {
-      editor.layout()
-    })
+    editor.layout()
   }
 
   return (

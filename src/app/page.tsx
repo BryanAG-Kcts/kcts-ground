@@ -14,7 +14,7 @@ interface Props {
 }
 export default function Home ({ searchParams }: Props): JSX.Element {
   return (
-    <main className='h-full flex'>
+    <main className='h-full flex overflow-hidden'>
       <aside className='asideConfig'>
         <Download html={searchParams.html} css={searchParams.css} js={searchParams.js} />
         <AsideSlider icon='/settings.svg' title='wasa'>

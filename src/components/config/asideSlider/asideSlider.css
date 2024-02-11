@@ -4,10 +4,16 @@
     right: 0;
     background: var(--bg-primary);
     color: var(--color-primary);
-    min-width: 350px;
+    min-width: 80vw;
     height: 100%;
     padding: 10px;
     border-left: solid 1px var(--color-primary);
+}
+
+@media (min-width: 640px) {
+    .asideSlider {
+        min-width: 350px;
+    }
 }
 
 .showAsideSlider {
@@ -23,6 +29,15 @@
     animation: moveXSliderHidden 0.4s ease forwards;
     -webkit-animation: moveXSliderHidden 0.4s ease forwards;
     z-index: -10;
+}
+
+.dangerZoneLeave {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: -50;
 }
 
 @keyframes moveXSliderShow {

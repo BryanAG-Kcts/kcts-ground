@@ -1,5 +1,5 @@
 'use client'
-import { MouseEvent, ReactNode, useRef } from 'react'
+import { ReactNode, useRef } from 'react'
 import { ReactSVG } from 'react-svg'
 import './asideSlider.css'
 
@@ -11,23 +11,27 @@ interface Props {
 
 export const AsideSlider = ({ icon, title, children }: Props): JSX.Element => {
   const section = useRef<HTMLDivElement>(null)
+  const dangerZoneLeave = useRef<HTMLDivElement>(null)
+  const button = useRef<HTMLButtonElement>(null)
 
-  function toggleSlider (e: MouseEvent<HTMLElement>): void {
+  function toggleSlider (): void {
     const slider = section.current
     slider?.classList.remove('hiddenAsideSlider')
     slider?.classList.toggle('showAsideSlider')
     slider?.classList.toggle('animateHiddenAsideSlider')
-    e.currentTarget.classList.toggle('rotate-180')
+    dangerZoneLeave.current?.classList.toggle('dangerZoneLeave')
+    button.current?.classList.toggle('rotate-180')
   }
 
   return (
     <>
-      <button className='transition-transform' onClick={toggleSlider}>
+      <button ref={button} className='transition-transform' onClick={toggleSlider}>
         <ReactSVG src={icon} title={title} desc={title} />
       </button>
       <section className='asideSlider hiddenAsideSlider animateHiddenAsideSlider' ref={section}>
         {children}
       </section>
+      <div ref={dangerZoneLeave} onMouseEnter={toggleSlider} className='w-0' />
     </>
   )
 }
