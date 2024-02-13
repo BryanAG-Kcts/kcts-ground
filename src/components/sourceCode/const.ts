@@ -9,7 +9,7 @@ export const defaultCss = /* css */`h1 {
 export const cssQuery = 'css'
 
 export const defaultJs = /* js */`const myH1 = document.querySelector('h1')
-myH1.innerHTML += ", CSS 3, Js aquí"
+myH1.innerHTML += ", CSS 3, JS aquí"
 `
 
 export const jsQuery = 'js'

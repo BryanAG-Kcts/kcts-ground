@@ -12,10 +12,6 @@ export const metadata: Metadata = {
   description: 'Playground de código, transforma tu html,css y js en un pdf',
   alternates: {
     canonical: 'https://kcts-ground.vercel.app'
-  },
-  icons: {
-    icon: '/kactuswowIcon.png',
-    username: '/kactuswowIcon.png'
   }
 }
 

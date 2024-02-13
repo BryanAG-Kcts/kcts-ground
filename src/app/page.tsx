@@ -5,6 +5,7 @@ import { Playground } from '@/components/playground/playground'
 import { SourceCode } from '@/components/sourceCode/sourceCode'
 import { EditorGrid } from './editorGrid'
 import { Suspense } from 'react'
+import { NpmPackages } from '@/components/npmPackages/npmPackages'
 interface Props {
   searchParams: {
     html?: string
@@ -17,8 +18,11 @@ export default function Home ({ searchParams }: Props): JSX.Element {
     <main className='h-full flex overflow-hidden'>
       <aside className='asideConfig'>
         <Download html={searchParams.html} css={searchParams.css} js={searchParams.js} />
-        <AsideSlider icon='/settings.svg' title='wasa'>
+        <AsideSlider icon='/settings.svg' title='Configuración'>
           <UserOptions />
+        </AsideSlider>
+        <AsideSlider icon='/npm.svg' title='Busca paquetes NPM'>
+          <NpmPackages />
         </AsideSlider>
       </aside>
 
