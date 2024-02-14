@@ -27,3 +27,15 @@ body {
     position: relative;
     z-index: 100;
 }
+
+input {
+    color: var(--color-primary);
+    background: var(--bg-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    padding: 5px 10px;
+}

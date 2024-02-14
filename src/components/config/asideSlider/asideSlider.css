@@ -19,6 +19,7 @@
     -ms-transition: transform 0.3s;
     -o-transition: transform 0.3s;
     z-index: -10;
+    overflow-y: auto;
 }
 
 .labelHandler:has(:checked) + .asideSlider {
