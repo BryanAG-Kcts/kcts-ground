@@ -53,3 +53,12 @@
     height: 100%;
     z-index: -90;
 }
+
+.labelHandler:has(:checked) {
+    background: var(--bg-secondary);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}

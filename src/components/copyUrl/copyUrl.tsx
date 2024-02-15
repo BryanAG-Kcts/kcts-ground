@@ -13,7 +13,7 @@ export const CopyUrl = (): JSX.Element => {
   }
 
   return (
-    <button onClick={getUrl} title='Copiar URL'>
+    <button className='p-2' onClick={getUrl} title='Copiar URL'>
       <ReactSVG src='/copy.svg' title='Copiar URL' desc='Copiar URL' />
     </button>
   )

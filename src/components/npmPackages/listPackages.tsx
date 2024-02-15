@@ -60,7 +60,7 @@ export const NpmPackage = ({ pkg, match }: PropNpmPackage): JSX.Element => {
       <a className='underline' target='_blank' rel='noreferrer' href={pkg.links.repository}>Ver repositorio</a>
       <a className='underline' target='_blank' rel='noreferrer' href={pkg.links.repository}>Ver más información</a>
 
-      <button onClick={addDependency}>Agregar</button>
+      <button className='btn' onClick={addDependency}>Agregar</button>
 
       <p>Versión: {pkg.version}</p>
     </div>

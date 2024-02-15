@@ -14,6 +14,6 @@ export const Playground = ({ html64 = '', css64 = '', js64 = '' }: Props): JSX.E
   const iframe = generateIframeHTML(html, css, js)
 
   return (
-    <iframe className='sectionSplit iframePlayGround' srcDoc={iframe} />
+    <iframe id='iframePlayGround' className='sectionSplit iframePlayGround' srcDoc={iframe} />
   )
 }

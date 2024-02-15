@@ -20,7 +20,7 @@ export const AsideSliderInput = ({ icon, title }: Props): JSX.Element => {
 
   return (
     <>
-      <label className='labelHandler'>
+      <label className='labelHandler p-3'>
         <span className='transition-transform cursor-pointer block' title={title}>
           <ReactSVG src={icon} title={title} desc={title} />
         </span>
