@@ -43,12 +43,10 @@ export const NpmPackage = ({ pkg, match }: PropNpmPackage): JSX.Element => {
   function addDependency (): void {
     const code = selectModulePackage(pkg.name)
     const actualValue = searchParams.get(query) ?? ''
-
-    if (actualValue.includes(code)) return
-
     const decode = atob(code)
     const actualValueDecode = atob(actualValue)
 
+    if (actualValueDecode.includes(decode)) return
     const newQueryValue = btoa(`${decode}\n${actualValueDecode}`)
 
     params.set(query, newQueryValue)

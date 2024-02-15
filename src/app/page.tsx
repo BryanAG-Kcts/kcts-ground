@@ -22,9 +22,9 @@ export default function Home ({ searchParams }: Props): JSX.Element {
           <AsideSlider icon='/npm.svg' title='Busca paquetes NPM'>
             <NpmPackages />
           </AsideSlider>
+          <Download html={searchParams.html} css={searchParams.css} js={searchParams.js} />
         </div>
         <div>
-          <Download html={searchParams.html} css={searchParams.css} js={searchParams.js} />
           <CopyUrl />
           <AsideSlider icon='/settings.svg' title='Configuración'>
             <UserOptions />

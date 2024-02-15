@@ -5,14 +5,20 @@ const blackList = {
 
 const getPackageCDN = (pkg: string): string => blackList[pkg as keyof typeof blackList] ?? `https://cdn.skypack.dev/${pkg}`
 
+const interceptInvalidCharacters = /[-@/]/
+
 export function setScriptPackage (pkg: string): string {
   const script = /* html */`<script src="${getPackageCDN(pkg)}"></script>`
   const code = btoa(script)
   return code
 }
 export function setImportPackage (pkg: string): string {
-//   const splittedName = pkg.split('-')
-  const script = `import ${pkg} from "${getPackageCDN(pkg)}"`
+  const splittedName = pkg.split(interceptInvalidCharacters)
+  const isNumber = Number(splittedName[0][0])
+  if (!isNaN(isNumber)) splittedName[0] = '_' + splittedName[0]
+  const capitalizeName = splittedName.map(text => (text.trim().length > 0 ? text[0].toUpperCase() + text.substring(1) : '')).join('').trim()
+
+  const script = `import ${capitalizeName} from "${getPackageCDN(pkg)}"`
   const code = btoa(script)
   return code
 }
