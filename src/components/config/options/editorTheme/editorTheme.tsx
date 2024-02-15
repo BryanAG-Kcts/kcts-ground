@@ -1,8 +1,7 @@
 'use client'
 import { ChangeEvent } from 'react'
 import { EditorThemes, editorThemes } from '../../const'
-import { useConfig } from '@/hooks/configState'
-import style from '../options.module.css'
+import { useConfig } from '@/hooks/useConfig'
 
 export const EditorTheme = (): JSX.Element => {
   const { editorTheme, setEditorTheme } = useConfig()
@@ -15,7 +14,7 @@ export const EditorTheme = (): JSX.Element => {
   }
 
   return (
-    <select defaultValue={editorTheme} className={style.selectOptions} onChange={handleTheme}>
+    <select defaultValue={editorTheme} onChange={handleTheme}>
       <option value={editorThemes.light}>Modo claro</option>
       <option value={editorThemes.dark}>Modo oscuro</option>
     </select>

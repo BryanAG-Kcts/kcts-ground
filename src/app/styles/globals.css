@@ -39,3 +39,9 @@ input {
     -o-border-radius: 5px;
     padding: 5px 10px;
 }
+
+select {
+    background: var(--bg-primary);
+    color: var(--color-primary);
+    padding: 10px 5px;
+}

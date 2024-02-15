@@ -24,24 +24,14 @@ export const SourceCode = (): JSX.Element => {
     replace(`${pathName}?${params.toString()}`)
   }
 
-  const resetEditor: ResetEditor = (query, code, editorRef) => {
+  const resetEditor: ResetEditor = (query, code) => {
     handleQueryParams(query, code)
-    const editor = editorRef.current
-    if (editor != null) {
-      editor.setValue(code)
-    }
   }
 
   const editorMount: EditorMount = (editor, query, defaultCode) => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (!searchParams.get(htmlQuery) && !searchParams.get(cssQuery) && !searchParams.get(jsQuery)) {
-      editor.setValue(defaultCode)
       handleQueryParams(query, defaultCode)
-    }
-
-    const code = searchParams.get(query)
-    if (code != null) {
-      editor.setValue(atob(code))
     }
 
     editor.layout()

@@ -2,6 +2,7 @@
 import { ChangeEvent, useState } from 'react'
 import { ListPackages } from './listPackages'
 import db from 'just-debounce'
+import { SelectModule } from './selectModule'
 
 export const SearchPackages = (): JSX.Element => {
   const [searchPkg, setSearchPkg] = useState<string>('')
@@ -12,7 +13,8 @@ export const SearchPackages = (): JSX.Element => {
 
   return (
     <>
-      <input onChange={handleSearch} type='text' />
+      <SelectModule />
+      <input placeholder='Mínimo escribe 2 letras' onChange={handleSearch} type='text' />
       {searchPkg.trim().length > 0 && <ListPackages searchPkg={searchPkg} />}
     </>
   )

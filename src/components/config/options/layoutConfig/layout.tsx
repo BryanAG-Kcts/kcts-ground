@@ -1,5 +1,5 @@
 'use client'
-import { useConfig } from '@/hooks/configState'
+import { useConfig } from '@/hooks/useConfig'
 import { LayoutGridEditor, layoutGridEditorArray } from '../../const'
 
 export const Layout = (): JSX.Element => {

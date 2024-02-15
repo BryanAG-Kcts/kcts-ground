@@ -1,8 +1,7 @@
 'use client'
-import { useConfig } from '@/hooks/configState'
+import { useConfig } from '@/hooks/useConfig'
 import { ChangeEvent } from 'react'
 import { EditorLineNumbers, editorLineNumbersArray } from '../../const'
-import style from '../options.module.css'
 
 export const EditorNumber = (): JSX.Element => {
   const { editorLineNumbers, setEditorLineNumbers } = useConfig()
@@ -13,7 +12,7 @@ export const EditorNumber = (): JSX.Element => {
   }
 
   return (
-    <select defaultValue={editorLineNumbers} className={style.selectOptions} onChange={handleLineNumber}>
+    <select defaultValue={editorLineNumbers} onChange={handleLineNumber}>
       {
         editorLineNumbersArray.map(lineNumber => <option key={lineNumber} value={lineNumber}>{lineNumber}</option>)
       }

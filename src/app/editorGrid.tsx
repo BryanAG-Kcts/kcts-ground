@@ -1,5 +1,5 @@
 'use client'
-import { useConfig } from '@/hooks/configState'
+import { useConfig } from '@/hooks/useConfig'
 import { ReactNode } from 'react'
 
 interface Props {

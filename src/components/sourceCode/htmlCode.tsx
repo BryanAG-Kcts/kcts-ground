@@ -3,15 +3,14 @@ import { Editor } from '@monaco-editor/react'
 import { FloatLang } from './floatLang'
 import { EditorLangProps } from './types'
 import { defaultHtml, htmlQuery } from './const'
-import { useRef } from 'react'
-import { useConfig } from '@/hooks/configState'
+import { useConfig } from '@/hooks/useConfig'
+import { useSearchParams } from 'next/navigation'
 
 export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLangProps): JSX.Element => {
-  const editorRef = useRef<any>(null)
   const { editorTheme, editorLineNumbers } = useConfig()
+  const searchParams = useSearchParams()
 
   function mount (editor: any): void {
-    editorRef.current = editor
     editorMount(editor, htmlQuery, defaultHtml)
   }
 
@@ -25,6 +24,7 @@ export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: Editor
         theme={editorTheme}
         onChange={value => handleQueryParams(htmlQuery, value)}
         onMount={editor => mount(editor)}
+        value={atob(searchParams.get(htmlQuery) ?? '')}
         options={{
           wordWrap: 'on',
           minimap: { enabled: false },
@@ -33,7 +33,7 @@ export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: Editor
 
       />
 
-      <FloatLang alt='HTML 5' src='html5.svg' code={defaultHtml} editorRef={editorRef} fn={resetEditor} query={htmlQuery} />
+      <FloatLang alt='HTML 5' src='html5.svg' code={defaultHtml} fn={resetEditor} query={htmlQuery} />
     </div>
   )
 }

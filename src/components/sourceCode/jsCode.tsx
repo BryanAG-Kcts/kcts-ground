@@ -3,15 +3,14 @@ import { Editor } from '@monaco-editor/react'
 import { FloatLang } from './floatLang'
 import { EditorLangProps } from './types'
 import { defaultJs, jsQuery } from './const'
-import { useRef } from 'react'
-import { useConfig } from '@/hooks/configState'
+import { useConfig } from '@/hooks/useConfig'
+import { useSearchParams } from 'next/navigation'
 
 export const JsCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLangProps): JSX.Element => {
-  const editorRef = useRef<any>(null)
   const { editorTheme, editorLineNumbers } = useConfig()
+  const searchParams = useSearchParams()
 
   function mount (editor: any): void {
-    editorRef.current = editor
     editorMount(editor, jsQuery, defaultJs)
   }
 
@@ -30,9 +29,10 @@ export const JsCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLa
           minimap: { enabled: false },
           lineNumbers: editorLineNumbers
         }}
+        value={atob(searchParams.get(jsQuery) ?? '')}
       />
 
-      <FloatLang alt='JavaScript' src='js.svg' code={defaultJs} editorRef={editorRef} fn={resetEditor} query={jsQuery} />
+      <FloatLang alt='JavaScript' src='js.svg' code={defaultJs} fn={resetEditor} query={jsQuery} />
     </div>
   )
 }
