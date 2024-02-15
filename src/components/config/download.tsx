@@ -18,7 +18,7 @@ export const Download = ({ html = '', css = '', js = '' }: Props): JSX.Element =
   }
 
   return (
-    <button onClick={download}>
+    <button title='Descargar pdf' onClick={download}>
       <ReactSVG src='/download.svg' title='Descargar pdf' desc='Descargar pdf' />
     </button>
   )

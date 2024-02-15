@@ -6,6 +6,7 @@ import { SourceCode } from '@/components/sourceCode/sourceCode'
 import { EditorGrid } from './editorGrid'
 import { Suspense } from 'react'
 import { NpmPackages } from '@/components/npmPackages/npmPackages'
+import { CopyUrl } from '@/components/copyUrl/copyUrl'
 interface Props {
   searchParams: {
     html?: string
@@ -17,13 +18,18 @@ export default function Home ({ searchParams }: Props): JSX.Element {
   return (
     <main className='h-full flex'>
       <aside className='asideConfig'>
-        <Download html={searchParams.html} css={searchParams.css} js={searchParams.js} />
-        <AsideSlider icon='/settings.svg' title='Configuración'>
-          <UserOptions />
-        </AsideSlider>
-        <AsideSlider icon='/npm.svg' title='Busca paquetes NPM'>
-          <NpmPackages />
-        </AsideSlider>
+        <div>
+          <AsideSlider icon='/npm.svg' title='Busca paquetes NPM'>
+            <NpmPackages />
+          </AsideSlider>
+        </div>
+        <div>
+          <Download html={searchParams.html} css={searchParams.css} js={searchParams.js} />
+          <CopyUrl />
+          <AsideSlider icon='/settings.svg' title='Configuración'>
+            <UserOptions />
+          </AsideSlider>
+        </div>
       </aside>
 
       <Suspense>
