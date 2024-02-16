@@ -7,4 +7,6 @@ export interface Props {
   setEditorTheme: (editorTheme: EditorThemes) => void
   editorLineNumbers: EditorLineNumbers
   setEditorLineNumbers: (editorLineNumbers: EditorLineNumbers) => void
+  editorFontSize: number
+  setEditorFontSize: (editorFontSize: number) => void
 }

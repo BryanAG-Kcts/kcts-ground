@@ -9,7 +9,7 @@ interface Props {
 export const Download = ({ html64 = '', css64 = '', js64 = '' }: Props): JSX.Element => {
   return (
     <section className='flex flex-col gap-4'>
-      <h2>Zona de descargas</h2>
+      <h2 className='text-lg font-semibold'>Zona de descargas</h2>
       <p>Puedes descargar tu código en varios formatos y conversiones</p>
       <DownloadPDF />
       <DownloadCode css64={css64} html64={html64} js64={js64} />

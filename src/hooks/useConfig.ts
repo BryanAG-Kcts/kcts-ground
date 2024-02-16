@@ -4,9 +4,11 @@ import { editorLineNumbers, editorThemes, layoutGridEditor } from '@/components/
 
 export const useConfig = create<Props>((set) => ({
   editorGrid: layoutGridEditor.editorGrid_v1,
-  setEditorGrid: (editorGrid) => set({ editorGrid }),
+  setEditorGrid: editorGrid => set({ editorGrid }),
   editorTheme: editorThemes.dark,
-  setEditorTheme: (editorTheme) => set({ editorTheme }),
+  setEditorTheme: editorTheme => set({ editorTheme }),
   editorLineNumbers: editorLineNumbers.on,
-  setEditorLineNumbers: (editorLineNumbers) => set({ editorLineNumbers })
+  setEditorLineNumbers: editorLineNumbers => set({ editorLineNumbers }),
+  editorFontSize: 14,
+  setEditorFontSize: editorFontSize => set({ editorFontSize })
 }))

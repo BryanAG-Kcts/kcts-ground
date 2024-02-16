@@ -1,3 +1,4 @@
+import { EditorFontSize } from './editorFontSize/editorFontSize'
 import { EditorNumber } from './editorNumber/editorNumber'
 import { EditorTheme } from './editorTheme/editorTheme'
 import { Layout } from './layoutConfig/layout'
@@ -12,6 +13,8 @@ export const UserOptions = (): JSX.Element => {
       <EditorTheme />
       <h4>Mostrar indices del editor:</h4>
       <EditorNumber />
+      <h4>Tamaño de fuente del editor:</h4>
+      <EditorFontSize />
     </section>
   )
 }

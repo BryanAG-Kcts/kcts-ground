@@ -7,7 +7,7 @@ import { useConfig } from '@/hooks/useConfig'
 import { useSearchParams } from 'next/navigation'
 
 export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLangProps): JSX.Element => {
-  const { editorTheme, editorLineNumbers } = useConfig()
+  const { editorTheme, editorLineNumbers, editorFontSize } = useConfig()
   const searchParams = useSearchParams()
 
   function mount (editor: any): void {
@@ -28,9 +28,9 @@ export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: Editor
         options={{
           wordWrap: 'on',
           minimap: { enabled: false },
-          lineNumbers: editorLineNumbers
+          lineNumbers: editorLineNumbers,
+          fontSize: editorFontSize
         }}
-
       />
 
       <FloatLang alt='HTML 5' src='html5.svg' code={defaultHtml} fn={resetEditor} query={htmlQuery} />
