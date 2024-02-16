@@ -1,1 +1,1 @@
-export const generateIframeHTML = (html: string, css: string, js: string): string => `<html><head><style>${css}</style></head><body>${html}<script type="module">${js}</script></body></html>`
+export const generateIframeHTML = (html: string, css: string, js: string): string => `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kactus Page</title><style>${css}</style></head><body>${html}<script type="module">${js}</script></body></html>`

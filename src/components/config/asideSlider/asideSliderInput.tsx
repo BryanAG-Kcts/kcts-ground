@@ -20,8 +20,8 @@ export const AsideSliderInput = ({ icon, title }: Props): JSX.Element => {
 
   return (
     <>
-      <label className='labelHandler p-3'>
-        <span className='transition-transform cursor-pointer block' title={title}>
+      <label className='labelHandler p-3 cursor-pointer'>
+        <span className='transition-transform block' title={title}>
           <ReactSVG src={icon} title={title} desc={title} />
         </span>
         <input ref={inputCheckBox} title={title} onChange={cleanChecks} type='checkbox' className='hidden checkAsideSlider' />

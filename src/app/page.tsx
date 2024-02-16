@@ -7,6 +7,7 @@ import { Suspense } from 'react'
 import { NpmPackages } from '@/components/npmPackages/npmPackages'
 import { CopyUrl } from '@/components/copyUrl/copyUrl'
 import { Download } from '@/components/download/download'
+import { Preview } from '@/components/preview/preview'
 interface Props {
   searchParams: {
     html?: string
@@ -28,6 +29,7 @@ export default function Home ({ searchParams }: Props): JSX.Element {
           </AsideSlider>
         </div>
         <div>
+          <Preview css64={searchParams?.css} html64={searchParams?.html} js64={searchParams?.js} />
           <AsideSlider icon='/settings.svg' title='Configuración'>
             <UserOptions />
           </AsideSlider>

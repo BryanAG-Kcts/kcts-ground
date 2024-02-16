@@ -76,3 +76,6 @@ select {
     -ms-transform: scale(0.99);
     -o-transform: scale(0.99);
 }
+.asideIcon {
+    padding: 0.75rem;
+}
