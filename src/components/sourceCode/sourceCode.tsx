@@ -5,7 +5,6 @@ import { CssCode } from './cssCode'
 import { JsCode } from './jsCode'
 import { EditorMount, HandleQueryParams, ResetEditor } from './types'
 import { cssQuery, htmlQuery, jsQuery } from './const'
-import { emmetCSS, emmetHTML } from 'emmet-monaco-es'
 
 export const SourceCode = (): JSX.Element => {
   const searchParams = useSearchParams()
@@ -34,10 +33,7 @@ export const SourceCode = (): JSX.Element => {
     if (!searchParams.get(htmlQuery) && !searchParams.get(cssQuery) && !searchParams.get(jsQuery)) {
       handleQueryParams(query, defaultCode)
     }
-
     editor.layout()
-    emmetCSS((window as any).monaco)
-    emmetHTML((window as any).monaco)
   }
 
   return (

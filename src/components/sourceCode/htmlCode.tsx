@@ -5,6 +5,7 @@ import { EditorLangProps } from './types'
 import { defaultHtml, htmlQuery } from './const'
 import { useConfig } from '@/hooks/useConfig'
 import { useSearchParams } from 'next/navigation'
+import { emmetCSS, emmetHTML } from 'emmet-monaco-es'
 
 export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: EditorLangProps): JSX.Element => {
   const { editorTheme, editorLineNumbers, editorFontSize } = useConfig()
@@ -12,6 +13,8 @@ export const HtmlCode = ({ handleQueryParams, editorMount, resetEditor }: Editor
 
   function mount (editor: any): void {
     editorMount(editor, htmlQuery, defaultHtml)
+    emmetCSS((window as any).monaco)
+    emmetHTML((window as any).monaco)
   }
 
   return (
