@@ -8,6 +8,8 @@ import { NpmPackages } from '@/components/npmPackages/npmPackages'
 import { CopyUrl } from '@/components/copyUrl/copyUrl'
 import { Download } from '@/components/download/download'
 import { Preview } from '@/components/preview/preview'
+import { Fonts } from '@/components/fonts/fonts'
+import { InitSates } from '@/components/initSates'
 interface Props {
   searchParams: {
     html?: string
@@ -17,31 +19,38 @@ interface Props {
 }
 export default function Home ({ searchParams }: Props): JSX.Element {
   return (
-    <main className='h-full flex'>
-      <aside className='asideConfig'>
-        <div>
-          <CopyUrl />
-          <AsideSlider icon='/npm.svg' title='Busca paquetes NPM'>
-            <NpmPackages />
-          </AsideSlider>
-          <AsideSlider icon='/download.svg' title='Descargar'>
-            <Download css64={searchParams?.css} html64={searchParams?.html} js64={searchParams?.js} />
-          </AsideSlider>
-        </div>
-        <div>
-          <Preview css64={searchParams?.css} html64={searchParams?.html} js64={searchParams?.js} />
-          <AsideSlider icon='/settings.svg' title='Configuración'>
-            <UserOptions />
-          </AsideSlider>
-        </div>
-      </aside>
+    <>
+      <InitSates />
 
-      <Suspense>
-        <EditorGrid>
-          <SourceCode />
-          <Playground css64={searchParams?.css} html64={searchParams?.html} js64={searchParams?.js} />
-        </EditorGrid>
-      </Suspense>
-    </main>
+      <main className='h-full flex'>
+        <aside className='asideConfig'>
+          <div>
+            <CopyUrl />
+            <AsideSlider icon='/box.svg' title='Busca paquetes NPM'>
+              <NpmPackages />
+            </AsideSlider>
+            <AsideSlider icon='/letter-case.svg' title='Agregar fuentes'>
+              <Fonts />
+            </AsideSlider>
+            <AsideSlider icon='/download.svg' title='Descargar'>
+              <Download css64={searchParams?.css} html64={searchParams?.html} js64={searchParams?.js} />
+            </AsideSlider>
+          </div>
+          <div>
+            <Preview css64={searchParams?.css} html64={searchParams?.html} js64={searchParams?.js} />
+            <AsideSlider icon='/settings.svg' title='Configuración'>
+              <UserOptions />
+            </AsideSlider>
+          </div>
+        </aside>
+
+        <Suspense>
+          <EditorGrid>
+            <SourceCode />
+            <Playground css64={searchParams?.css} html64={searchParams?.html} js64={searchParams?.js} />
+          </EditorGrid>
+        </Suspense>
+      </main>
+    </>
   )
 }
